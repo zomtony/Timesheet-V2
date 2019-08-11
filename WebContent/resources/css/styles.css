@@ -1,0 +1,32 @@
+body {
+	min-width: 1000px;
+}
+
+#heading {
+	padding: 20px;
+	height: 60px;
+	margin-bottom: 10px;
+	background: #f4f4f4;
+	border: 1px solid darkGray;
+	text-align: center;
+	vertical-align: middle;
+}
+
+#sidebarTop {
+	border: thin solid lightGray;
+	padding: 5px;
+	background: #eeeeee;
+}
+
+#content {
+	padding: 5px;
+	height: 400px;
+	top: 90px;
+}
+
+.positionLogin{
+	text-align:center;
+}
+.errorMessage {
+   color:red; 
+}

@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"  
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+<h:head>
+	<title>Create Time Sheet</title>
+	<h:outputStylesheet library="css" name="styles.css" />
+</h:head>
+<h:body>
+	<ui:composition template="/templates/employeeLayout.xhtml">
+		<ui:define name="heading">
+			<ui:include src="/sections/head/header.xhtml" />
+		</ui:define>
+		<ui:define name="content">
+			<h:form>
+				<table>
+					<tr>
+						<td width="45%"><label>#{msgs.employeeNumber}:</label> <h:outputText
+								value="#{employeeManager.curEmployee.empNumber}" size="10" /></td>
+						<td width="30%"><label>#{msgs.weekNumber}:</label> <h:outputText
+								value="#{employeeManager.timesheetManager.empTimeSheetShow.weekNumber}"
+								size="10"></h:outputText></td>
+
+						<td width="30%"><label>#{msgs.weekEnd}:</label> <h:outputText
+								value="#{employeeManager.timesheetManager.empTimeSheetShow.endWeek}"
+								size="10">
+								<f:convertDateTime pattern="yyyy/MM/dd"
+									timeZone="America/Vancouver" />
+							</h:outputText></td>
+					</tr>
+					<tr>
+						<td><label>#{msgs.name}:</label> <h:outputText
+								value="#{employeeManager.curEmployee.name}" size="10" /></td>
+					</tr>
+				</table>
+
+
+				<h:dataTable
+					value="#{employeeManager.timesheetManager.currentTimesheetRowList}"
+					var="timeSheetRow" styleClass="table" columnClasses="odd,even">
+
+
+					<h:column>
+						<f:facet name="header">
+							<h:outputText value="#{msgs.project}" style="font-weight: bold" />
+						</f:facet>
+						<h:inputText value="#{timeSheetRow.projectID}" size="10" />
+					</h:column>
+
+
+					<h:column>
+						<f:facet name="header">
+							<h:outputText value="#{msgs.wp}" style="font-weight: bold" />
+						</f:facet>
+						<h:inputText value="#{timeSheetRow.workPackage}" size="10" />
+					</h:column>
+
+					<h:column>
+						<f:facet name="header">
+							<h:outputText value="#{msgs.sat}" style="font-weight: bold" />
+						</f:facet>
+						<h:inputText value="#{timeSheetRow.hoursForWeek[0]}" size="10"
+							id="sat">
+							<f:validateLongRange minimum="0" maximum="24" />
+						</h:inputText>
+						<br />
+						<h:message for="sat" styleClass="errorMessage" style="color:red" />
+					</h:column>
+
+					<h:column>
+						<f:facet name="header">
+							<h:outputText value="#{msgs.sun}" style="font-weight: bold" />
+						</f:facet>
+						<h:inputText value="#{timeSheetRow.hoursForWeek[1]}" size="10"
+							id="sun">
+							<f:validateLongRange minimum="0" maximum="24" />
+						</h:inputText>
+						<br />
+						<h:message for="sun" styleClass="errorMessage" style="color:red" />
+					</h:column>
+
+					<h:column>
+						<f:facet name="header">
+							<h:outputText value="#{msgs.mon}" style="font-weight: bold" />
+						</f:facet>
+						<h:inputText value="#{timeSheetRow.hoursForWeek[2]}" size="10"
+							id="mon">
+							<f:validateLongRange minimum="0" maximum="24" />
+						</h:inputText>
+						<br />
+						<h:message for="mon" styleClass="errorMessage" style="color:red" />
+					</h:column>
+
+					<h:column>
+						<f:facet name="header">
+							<h:outputText value="#{msgs.tue}" style="font-weight: bold" />
+						</f:facet>
+						<h:inputText value="#{timeSheetRow.hoursForWeek[3]}" size="10"
+							id="tue">
+							<f:validateLongRange minimum="0" maximum="24" />
+						</h:inputText>
+						<br />
+						<h:message for="tue" styleClass="errorMessage" style="color:red" />
+					</h:column>
+
+					<h:column>
+						<f:facet name="header">
+							<h:outputText value="#{msgs.wed}" style="font-weight: bold" />
+						</f:facet>
+						<h:inputText value="#{timeSheetRow.hoursForWeek[4]}" size="10"
+							id="wed">
+							<f:validateLongRange minimum="0" maximum="24" />
+						</h:inputText>
+						<br />
+						<h:message for="wed" styleClass="errorMessage" style="color:red" />
+					</h:column>
+
+					<h:column>
+						<f:facet name="header">
+							<h:outputText value="#{msgs.thu}" style="font-weight: bold" />
+						</f:facet>
+						<h:inputText value="#{timeSheetRow.hoursForWeek[5]}" size="10"
+							id="thu">
+							<f:validateLongRange minimum="0" maximum="24" />
+						</h:inputText>
+						<br />
+						<h:message for="thu" styleClass="errorMessage" style="color:red" />
+					</h:column>
+
+					<h:column>
+						<f:facet name="header">
+							<h:outputText value="#{msgs.fri}" style="font-weight: bold" />
+						</f:facet>
+						<h:inputText value="#{timeSheetRow.hoursForWeek[6]}" size="10"
+							id="fri">
+							<f:validateLongRange minimum="0" maximum="24" />
+						</h:inputText>
+						<br />
+						<h:message for="fri" styleClass="errorMessage" style="color:red" />
+					</h:column>
+
+					<h:column>
+						<f:facet name="header">
+							<h:outputText value="#{msgs.notes}" style="font-weight: bold" />
+						</f:facet>
+						<h:inputText value="#{timeSheetRow.notes}" size="10" />
+					</h:column>
+
+				</h:dataTable>
+
+
+				<a><h:commandButton value="#{msgs.addRow}"
+						action="#{employeeManager.timesheetManager.editAddOneRow}"
+						class="btn btn-info" /></a>
+				<a><h:commandButton value="#{msgs.update}"
+						action="#{employeeManager.timesheetManager.updataTimeSheet}"
+						class="btn btn-info" /></a>
+				<a><h:commandButton value="#{msgs.back}"
+						action="#{employeeManager.back}" class="btn btn-info" /></a>
+
+			</h:form>
+		</ui:define>
+	</ui:composition>
+</h:body>
+</html>

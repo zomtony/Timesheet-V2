@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"  
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+<h:head>
+	<title>Employee Panel</title>
+</h:head>
+<h:body>
+	<h1>Employee Panel</h1>
+	<ui:composition template="/templates/employeeLayout.xhtml">
+		<ui:define name="heading">
+			<ui:include src="/sections/head/header.xhtml" />
+		</ui:define>
+		<ui:define name="content">
+			<h:form>
+				<h:dataTable
+					value="#{employeeManager.timesheetManager.curEmployeeTimeSheetList}"
+					var="empTimeSheetList" styleClass="table"
+					columnClasses="odd,even">
+
+					<h:column>
+						<f:facet name="header">
+							<h:outputText value="#{msgs.employeeNumber}" style="font-weight: bold" />
+						</f:facet>
+						<h:outputText value="#{empTimeSheetList.employee.empNumber}" size="10" />
+					</h:column>
+					
+					<h:column>
+						<f:facet name="header">
+							<h:outputText value="#{msgs.weekNumber}" style="font-weight: bold" />
+						</f:facet>
+						<h:outputText value="#{empTimeSheetList.weekNumber}" size="10" />
+					</h:column>
+					
+					<h:column>
+						<f:facet name="header">
+							<h:outputText value="#{msgs.projectEnd}" style="font-weight: bold" />
+						</f:facet>
+						<h:outputText value="#{empTimeSheetList.endWeek}" size="10">
+							<f:convertDateTime pattern="yyyy.MM.dd" timeZone="America/Vancouver" />
+						</h:outputText>
+					</h:column>
+
+					<h:column>
+						<h:commandLink value="#{msgs.viewTimesheet}"
+							action="#{employeeManager.timesheetManager.viewTimeSheet(empTimeSheetList)}" class="btn btn-info"/>
+					</h:column>
+				</h:dataTable>
+			</h:form>
+		</ui:define>
+	</ui:composition>
+	<ui:debug />
+</h:body>
+</html>

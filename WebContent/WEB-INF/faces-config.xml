@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<faces-config xmlns="http://java.sun.com/xml/ns/javaee"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-facesconfig_2_0.xsd"
+	version="2.0">
+
+
+	<navigation-rule>
+		<navigation-case>
+			<from-outcome>adminLogin</from-outcome>
+			<to-view-id>/adminPanel.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+	
+	<navigation-rule>
+		<navigation-case>
+			<from-outcome>backAdmin</from-outcome>
+			<to-view-id>/adminPanel.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+	
+	<navigation-rule>
+		<navigation-case>
+			<from-outcome>backEmp</from-outcome>
+			<to-view-id>/employeePanel.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+	
+	<navigation-rule>
+		<navigation-case>
+			<from-outcome>logout</from-outcome>
+			<to-view-id>/login.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+
+	<navigation-rule>
+		<navigation-case>
+			<from-outcome>sucessCreated</from-outcome>
+			<to-view-id>/adminPanel.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+
+	<navigation-rule>
+		<navigation-case>
+			<from-outcome>createTimeSheet</from-outcome>
+			<to-view-id>/createTimeSheet.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+
+	<navigation-rule>
+		<navigation-case>
+			<from-outcome>finsihCreateTimeSheet</from-outcome>
+			<to-view-id>/employeePanel.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+
+	<navigation-rule>
+		<navigation-case>
+			<from-outcome>successChangePwd</from-outcome>
+			<to-view-id>/employeePanel.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+
+	<navigation-rule>
+		<navigation-case>
+			<from-outcome>showTimeSheet</from-outcome>
+			<to-view-id>/timeSheetDetail.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+
+	<navigation-rule>
+		<navigation-case>
+			<from-outcome>editCurTimesheet</from-outcome>
+			<to-view-id>/editCurTimesheet.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+
+	<application>
+		<resource-bundle>
+			<base-name>ca.bcit.infosys.manager.messages</base-name>
+			<var>msgs</var>
+		</resource-bundle>
+	</application>
+
+
+</faces-config>

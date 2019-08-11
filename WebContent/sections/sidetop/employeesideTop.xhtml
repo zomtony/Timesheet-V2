@@ -1,0 +1,38 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:corejsf="http://corejsf.com/facelets">
+<head>
+<title>IGNORED</title>
+</head>
+<body>
+	<ui:composition>
+		<h:form style="height: 80px;">
+			<div class="navbar navbar-inverse">
+				<div class="nav navbar-nav">
+					<a><h:commandButton value="#{msgs.createSheet}"
+							action="#{employeeManager.timesheetManager.addTimesheet}"
+							style="width: 200px" class="btn btn-info" /></a> <a><h:commandButton
+							value="#{msgs.edit}"
+							action="#{employeeManager.timesheetManager.editCurTimesheet}"
+							style="width: 200px" class="btn btn-info" /></a> <a><h:commandButton
+							value="#{msgs.changePwd}" action="changePassword"
+							style="width: 200px" class="btn btn-info" /></a> <a><h:commandButton
+							value="#{msgs.logout}"
+							action="#{employeeManager.logout(employeeManager.curEmployee)}"
+							style="width: 200px" class="btn btn-info" /></a>
+
+				</div>
+			</div>
+			<br/>
+			<div style="text-align: center">
+			<a><h:outputText
+					value="#{msgs.epName}: #{employeeManager.curEmployee.name}"
+					style="font-weight: bold" /></a>
+			</div>
+		</h:form>
+	</ui:composition>
+</body>
+</html>
